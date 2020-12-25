@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "lib": ["es2015", "DOM"],
+    "module": "ES2020",
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
