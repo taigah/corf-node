@@ -1,5 +1,5 @@
 import test from 'ava'
-import { OpeningRepertoire } from '../src/corf.js'
+import { OpeningRepertoire } from '../dist/corf.js'
 
 const moves = [{
   line: ['e4'],
@@ -104,7 +104,7 @@ test('OpeningRepertoire.at', t => {
   }
 
   for (const move of moves) {
-    t.deepEqual(repertoire.at(move.line), move)
+    t.deepEqual(repertoire.at(move.line).node, move)
   }
 
   t.is(repertoire.at(['g4']), undefined)

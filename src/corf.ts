@@ -59,14 +59,14 @@ export class OpeningRepertoire {
     tree.node.meta = move.meta
   }
 
-  at (line: Line): Move {
+  at (line: Line): RepertoireTree {
     let tree = this.tree
     for (const moveNotation of line) {
       // Line not found in the repertoire
       if (tree.children.has(moveNotation) === false) return undefined
       tree = tree.children.get(moveNotation)
     }
-    return tree.node
+    return tree
   }
 }
 
