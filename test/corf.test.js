@@ -109,3 +109,13 @@ test('OpeningRepertoire.at', t => {
 
   t.is(repertoire.at(['g4']), undefined)
 })
+
+test('OpeningRepertoire.toJSON,fromJSON', t => {
+  const repertoire = new OpeningRepertoire()
+
+  for (const move of moves) {
+    repertoire.add(move)
+  }
+
+  t.deepEqual(repertoire.tree, OpeningRepertoire.fromJSON(repertoire.toJSON()).tree)
+})

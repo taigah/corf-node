@@ -68,5 +68,39 @@ export class OpeningRepertoire {
     }
     return tree
   }
-}
 
+  static toJSON (repertoire: OpeningRepertoire): string {
+    function transform (tree: RepertoireTree) {
+      const children = {}
+      for (const [ key, child ] of tree.children.entries()) {
+        children[key] = transform(child)
+      }
+      return {
+        node: tree.node,
+        children
+      }
+    }
+    return JSON.stringify(transform(repertoire.tree))
+  }
+  
+  toJSON (): string {
+    return OpeningRepertoire.toJSON(this)
+  }
+
+  static fromJSON (json: string): OpeningRepertoire {
+    const tree = JSON.parse(json)
+    function transform (tree: any): RepertoireTree {
+      const children = new Map()
+      for (const [ key, child ] of Object.entries(tree.children)) {
+        children.set(key, transform(child))
+      }
+      return {
+        node: tree.node,
+        children
+      }
+    }
+    const repertoire = new OpeningRepertoire()
+    repertoire.tree = transform(tree)
+    return repertoire
+  }
+}

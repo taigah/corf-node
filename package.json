@@ -1,6 +1,6 @@
 {
   "name": "corf",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "A Simple Chess Repertoire module used with .corf files",
   "main": "dist/corf.js",
   "type": "module",
